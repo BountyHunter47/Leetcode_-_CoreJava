@@ -5,10 +5,13 @@ class Tree{
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<>();
         Node root = createTree();
+        System.out.println("Inorder");
         inOrder(root);
         System.out.println();
+        System.out.println("Preorder");
         preOrder(root);
         System.out.println();
+        System.out.println("Postorder");
         postOrder(root);
     }
 
@@ -41,13 +44,13 @@ class Tree{
     static void preOrder(Node root){
         if(root == null) return;
         System.out.print(root.data+" ");
-        inOrder(root.left);
-        inOrder(root.right);
+        preOrder(root.left);
+        preOrder(root.right);
     }
     static void postOrder(Node root){
         if(root == null) return;
-        inOrder(root.left);
-        inOrder(root.right);
+        postOrder(root.left);
+        postOrder(root.right);
         System.out.print(root.data+" ");
     }
 
