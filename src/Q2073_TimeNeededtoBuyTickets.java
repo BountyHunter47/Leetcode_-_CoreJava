@@ -19,7 +19,7 @@ public class Q2073_TimeNeededtoBuyTickets {
                 if(q.peek() == 0) return ans;
                 else idx = q.size();
             }
-            if(q.peek() != 0) ans++;
+            if(q.peek() > 0) ans++;
             int temp = q.poll();
             q.offer(temp-1);
             idx--;
