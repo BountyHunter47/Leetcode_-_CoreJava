@@ -12,29 +12,18 @@ public class Q844 {
         while (i < s.length() || i < t.length()) {
             if (i < s.length()) {
                 if (s.charAt(i) == '#'){
-                    if (sb1.length()-1 >= 0){
-                        sb1.setLength(sb1.length()-1);
-                    }
-                    else {
-                        sb1 = new StringBuilder();
-                    }
+                    if (sb1.length()-1 >= 0) sb1.setLength(sb1.length()-1);
+                    else sb1 = new StringBuilder();
                 }
-                else {
-                    sb1.append(s.charAt(i));
-                }
+                else sb1.append(s.charAt(i));
+
             }
             if (i < t.length()) {
                 if (t.charAt(i) == '#'){
-                    if (sb2.length()-1 >= 0){
-                        sb2.setLength(sb2.length()-1);
-                    }
-                    else {
-                        sb2 = new StringBuilder();
-                    }
+                    if (sb2.length()-1 >= 0) sb2.setLength(sb2.length()-1);
+                    else sb2 = new StringBuilder();
                 }
-                else {
-                    sb2.append(t.charAt(i));
-                }
+                else sb2.append(t.charAt(i));
             }
             i++;
         }
