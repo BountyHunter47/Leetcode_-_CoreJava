@@ -7,11 +7,7 @@ public class _2 {
         char[] arr = s.toCharArray();
 
         int left = 0, right = s.length()-1;
-        while (left < right) {
-            if (arr[left] != arr[right]) return false;
-            left++;
-            right--;
-        }
+        while (left < right) if (arr[left++] != arr[right--]) return false;
 
         return true;
     }
