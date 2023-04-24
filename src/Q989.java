@@ -3,24 +3,32 @@ import java.util.List;
 
 public class Q989 {
     public static void main(String[] args) {
-        int[] nums = {9,9,9,9,9,9,9,9,9,9};
-        System.out.println(addToArrayForm(nums,34));
+        System.out.println(addToArrayForm(new int[]{2,1,5},806));
     }
     public static List<Integer> addToArrayForm(int[] num, int k) {
-        List<Integer> list = new ArrayList<>();
+            int carry = 0, i = num.length-1;
+            StringBuilder sb = new StringBuilder();
 
-        StringBuilder sb = new StringBuilder();
+            while (i >= 0 || k > 0 || carry > 0) {
+                int tmp1 = 0;
+                if (i >= 0) tmp1 = num[i];
+                int tmp2 = k % 10;
+                k /= 10;
 
-        for(int i : num) sb.append(i);
+                if (tmp1 + tmp2 + carry < 10) {
+                    sb.append(tmp1 + tmp2 + carry);
+                    carry = 0;
+                }
+                else {
+                    int tmp3 = tmp1 + tmp2 + carry;
+                    sb.append(tmp3 % 10);
+                    carry = tmp3 / 10;
+                }
+                i--;
+            }
+            List<Integer> list = new ArrayList<>();
+            for (int j = sb.length()-1; j >= 0 ; j--) list.add(sb.charAt(j) - '0');
 
-        long tmp = Long.parseLong(String.valueOf(sb));
-        tmp += k;
-
-        sb = new StringBuilder(String.valueOf(tmp));
-
-        for (int i = 0; i < sb.length(); i++) {
-            list.add(Integer.parseInt(String.valueOf(sb.charAt(i))));
-        }
-        return list;
+            return list;
     }
 }
