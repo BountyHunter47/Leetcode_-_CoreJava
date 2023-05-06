@@ -28,7 +28,6 @@ public class linkedlist{
 class LinkList{
     Node9 head;
     Node9 tail;
-
     public void insert(int data) {
         Node9 nn = new Node9(data);
         if (head == null){

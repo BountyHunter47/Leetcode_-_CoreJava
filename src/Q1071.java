@@ -1,16 +1,27 @@
 public class Q1071 {
     public static void main(String[] args) {
-        System.out.println(gcdofString("ABABAB", "ABAB"));
+        String str1 = "ABABAB";
+        String str2 = "ABAB";
+
+        System.out.println(gcdOfStrings(str1, str2));
+    }
+    public static String gcdOfStrings(String str1, String str2) {
+        String smallerString = str1.length() > str2.length() ? str2 : str1;
+        String biggerString = str1.length() > str2.length() ? str1 : str2;
+
+        return gcd(biggerString, smallerString);
     }
 
-    private static String gcdofString(String s1, String s2) {
-
-        if (!s1.contains(s2)) return "";
-
-        for (int i = 0; i < s2.length()-1; i++) {
-            for (int j = s2.length(); j >= 0; j--) {
-                if (s1.contains(s2.substring(i, j)) && s1.length() % s2.substring(i, j).length() == 0) return s2.substring(i, j);
-            }
+    private static String gcd(String str1, String str2) {
+        //If both are equal simply return
+        if(str1.equals(str2)){
+            return str1;
+        }
+        //If str1(the bigger string) starts with str2 then we can continue
+        if(str1.startsWith(str2)){
+            //Example ABABAB and AB we know that ABABAB starts with AB
+            //So just call gcdOfStrings(ABAB,AB)
+            return gcdOfStrings(str1.substring(str2.length()), str2);
         }
 
         return "";
