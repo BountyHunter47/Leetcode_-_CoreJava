@@ -1,4 +1,38 @@
 public class Utils {
+
+    public static void quickSortInAscending(int[] nums) {
+        quickSort(nums, 0, nums.length-1, 1);
+    }
+
+    public static void quickSortInDescending(int[] nums) {
+        quickSort(nums, 0, nums.length-1, 0);
+    }
+
+    private static void quickSort(int[] nums, int low, int high, int order) {
+        if (low >= high)return;
+        int pivot = f(nums, low, high, order);
+        quickSort(nums, low, pivot-1, order);
+        quickSort(nums, pivot+1, high, order);
+    }
+
+    private static int f(int[] nums, int low, int high, int order) {
+        int pivot = nums[low];
+        int i = low, j = high;
+
+        while (i < j) {
+            if (order == 1) {
+                while (i <= j && nums[i] <= pivot) i++;
+                while (i <= j && nums[j] > pivot) j--;
+            }else {
+                while (i <= j && nums[i] >= pivot) i++;
+                while (i <= j && nums[j] < pivot) j--;
+            }
+            if (i < j) Utils.swapInt(nums, i, j);
+        }
+        Utils.swapInt(nums, low, j);
+        return j;
+    }
+
     public static int[] loweCaseFreq(char[] nums) {
         int[] freq = new int[26];
         for (char ch : nums) freq[ch - 'a']++;
